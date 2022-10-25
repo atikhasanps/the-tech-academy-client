@@ -1,5 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import CourseCard from '../../CourseCard/CourseCard';
+import CourseCategories from '../../CourseCategories/CourseCategories';
 
 const Courses = () => {
     return (
@@ -7,10 +9,10 @@ const Courses = () => {
             <Container>
                 <Row>
                     <Col lg="4">
-                            <h2>hello</h2>
+                            <CourseCategories></CourseCategories>
                     </Col>
                     <Col lg="8">
-                            <h2>hello courses</h2>
+                            <CourseCard></CourseCard>
                     </Col>
                 </Row>
             </Container>
