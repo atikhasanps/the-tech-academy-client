@@ -2,8 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../../Checkout/Checkout";
 import CourseCategories from "../../CourseCategories/CourseCategories";
 import CourseDetails from "../../CourseDetails/CourseDetails";
-import DetailsShow from "../../DetailsShow/DetailsShow";
-import detailsShow from "../../DetailsShow/DetailsShow";
+
 import Main from "../../layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import Courses from "../../Pages/Courses/Courses";
@@ -43,8 +42,9 @@ export const routes = createBrowserRouter([
             },
 
             {
-                path:'/ckeckout/:id',
-                element:<Checkout></Checkout>
+                path:'/checkout/:id',
+                element:<Checkout></Checkout>,
+                loader: ({params}) =>fetch(`http://localhost:5000/courses/${params.id}`)
             },
             
             {
