@@ -1,8 +1,11 @@
 
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import './Header.css';
 
 const Header = () => {
+    const {user} = useContext(AuthContext)
     return (
 
            <div className='header mb-5 '>
@@ -17,6 +20,7 @@ const Header = () => {
                     <Link className='link me-5 text-white' to='/faq'>FAQ</Link>
                     <Link className='link me-5 text-white' to='blog'>Blog</Link>
                     <Link className='link me-5 text-white' to='login'>Login</Link>
+                    <Link className='link text-white'>{user?.displayName}</Link>
                 </div>
             </div>
            </div>
