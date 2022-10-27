@@ -3,9 +3,10 @@ import Header from '../../Shared/Header/Header';
 
 const Home = () => {
     return (
-        <div>
+        <div className='text-center '>
             
-            <h2>This is Home</h2>
+           
+            <img className='w-50 img-fluid w-100vh' src='header.png' alt=''/>
         </div>
     );
 };
