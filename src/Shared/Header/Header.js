@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import './Header.css';
 import { FaUser } from 'react-icons/fa';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 
 const Header = () => {
-    const {user} = useContext(AuthContext)
+    const {user,logOut} = useContext(AuthContext)
+
+
+    const handleLogOut =()=>{
+        logOut()
+        .then(()=>{})
+        .catch(error => console.error(error))
+    }
     return (
 
            <div className='header mb-5 '>
@@ -21,10 +28,20 @@ const Header = () => {
                     <Link className='link me-5 text-white' to='/courses'>Courses</Link>
                     <Link className='link me-5 text-white' to='/faq'>FAQ</Link>
                     <Link className='link me-5 text-white' to='blog'>Blog</Link>
-                    <Link className='link me-5 text-white' to='login'>Login</Link>
+                    
                     <Link className='link text-white'>
-                        
-                       {user?.displayName}
+                        {
+                            user?.uid?
+                            <>
+                            <span>{user?.displayName}</span>
+                            <Button variant="light" onClick={handleLogOut}>LogOut</Button>
+                            </>
+                            :
+                            <>
+                                <Link className='link me-5 text-white' to='login'>Login</Link>
+                            </>
+                        }
+                       
                     
                     </Link>
                     <Link>
