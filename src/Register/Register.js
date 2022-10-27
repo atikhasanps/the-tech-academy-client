@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
 const Register = () => {
-
+    const [error, setError] = useState('');
     const {createUser} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSubmit = event =>{
@@ -23,9 +23,13 @@ const Register = () => {
             const user =result.user;
             console.log(user);
             form.reset();
+            setError('');
             navigate('/loginwithEmail')
         })
-        .catch(e => console.error(e));
+        .catch(e => {
+            console.error(e)
+            setError(e.message);
+        });
     }
     return (
         <div className='w-50 mx-auto'>
@@ -53,6 +57,9 @@ const Register = () => {
       <Button variant="primary" type="submit">
         Register
       </Button>
+      <Form.Text className="text-danger">
+          {error}
+        </Form.Text>
     </Form>
         </div>
     );
