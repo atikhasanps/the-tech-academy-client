@@ -13,15 +13,15 @@ const CourseCategories = () => {
         .then(data => setCoursecategories(data));
     },[])
     return (
-        <div>
+        <div className='text-center'>
             <h2 >Course Category</h2>
-            <div className='course'>
+            <div className='course text-center'>
                 {
                     coursecategories.map(coursecategorie =><p 
                         
 
                     key={coursecategorie.id}>
-                    <Link className='link fs-3' 
+                    <Link className='p-link fs-3' 
                     to={`/coursedetails/${coursecategorie.id}`}>{coursecategorie.name}</Link>
                     
                     </p>)

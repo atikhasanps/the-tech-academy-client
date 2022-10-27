@@ -1,3 +1,17 @@
 .link{
     text-decoration: none;
 }
+.course{
+    padding: 20px;
+    background-color: #02294F;
+    
+}
+
+.p-link{
+    text-decoration: none;
+    background-color: white;
+    color:#02294F;
+    padding: 6px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}

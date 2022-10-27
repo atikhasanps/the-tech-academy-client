@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider/AuthProvider';
 const Register = () => {
     const [error, setError] = useState('');
-    const {createUser} = useContext(AuthContext);
+    const {createUser,updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSubmit = event =>{
         event.preventDefault();
@@ -24,12 +24,23 @@ const Register = () => {
             console.log(user);
             form.reset();
             setError('');
-            navigate('/loginwithEmail')
+            navigate('/loginwithEmail');
+            handleUpdateUserProfile(name, photoURL)
         })
         .catch(e => {
             console.error(e)
             setError(e.message);
         });
+    }
+
+    const handleUpdateUserProfile =(name, photoURL)=>{
+        const profile={
+            displayName : name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then(() =>{})
+        .catch(error => console.error(error));
     }
     return (
         <div className='w-50 mx-auto'>
